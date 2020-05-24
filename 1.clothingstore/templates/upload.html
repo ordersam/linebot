@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}寶寶服飾店 廠商平台{% endblock %}
+
+{% block main %}
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class = 'alert alert-success'>
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+<div class="container" style="margin: 4em auto">
+<div id="divinfo">
+  <form method="post"  enctype="multipart/form-data" action="{{ url_for('upload') }}">
+  <table class="table table-bordered">
+        
+ <tbody>
+     <tr>
+     
+     <th scope="row" colspan="2" style="text-align:center" class="h1">-上傳商品-</th>
+          
+     </tr>
+       <tr>
+    <th scope="row" class="h3" >產品類別</th>    
+     <td> <select name="psort" id="psort">
+        <option  value="外套">外套</option>
+        <option  value="上衣">上衣</option>
+        <option  value="褲子">褲子</option>
+        <option value="裙子">裙子</option>
+        <option  value="配件">配件</option>
+    </select></td>
+     </tr>
+    <tr>
+    <th scope="row">產品名稱</th>    
+     <td><input type="text" name="pname" ></td>
+     </tr>
+     <tr>
+          <th scope="row">產品金額</th>
+     <td><input type="text" name="pmoney"></td>
+     </tr>
+     <tr>
+         <th scope="row">產品圖片</th>
+     <td><input type="file" size="30" name="pimg"/></td>
+     </tr>
+     <tr>
+         <th scope="row">送出</th>
+     <td><input type="submit" value="送出"></td>
+    </tr>
+  </tbody>
+</table>               
+ 
+    {{okk}}
+     
+    </form>
+</div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  //alert("Wellcome！");
+</script>
+{% endblock %}

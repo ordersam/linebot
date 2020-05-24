@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}寶寶服飾店 廠商平台{% endblock %}
+
+{% block main %}
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class = 'alert alert-success'>
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+<div class="container" style="margin: 4em auto">
+     <table width="1200" border="1">
+  
+    </table>
+        
+      <table class="table table-striped">
+      <thead>
+          <tr>
+          <th colspan="6" style="text-align:center" class="h1">-商品列表-</th>
+          </tr>
+        <tr>
+          
+          <th scope="col">類別</th>
+          <th scope="col">名稱</th>
+          <th scope="col">金額</th>
+          <th scope="col">圖片</th>
+         <th scope="col">刪除</th>
+            
+        </tr>
+      </thead>
+      <tbody>
+         {% for i in u %}
+                <tr>
+                    
+                    <td>{{ i[1] }}</td>
+                    <td>{{ i[2] }}</td>
+                    <td>{{ i[3] }}</td>
+                    <td><img src={{ i[5] }} align="middle" width="200px" /></td>
+                    <td>
+    
+                     
+
+                  <form action="{{ url_for('delete_entry') }}" method=POST class=delete-entry>
+                    <input type="hidden" name="entry_id" value='{{ i[0] }}'>
+              <input type="hidden" name="entry_img" value='{{ i[4] }}'>
+                    <input type="submit" value="Delete" />
+          </form>
+    
+              </td>
+                    
+                </tr>         
+             {% endfor %}
+      </tbody>
+    </table>  
+    
+  </div>
+  {% endblock %}
+  
+  {% block script %}
+  <script>
+     //alert("Wellcome！");
+  </script>
+  {% endblock %}
